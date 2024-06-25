@@ -5,9 +5,27 @@ body, html{
 
 .menu{
     width: 256px;
-    position: sticky;
+    position: fixed;
     height: 100%;
     background: #fff;
     box-shadow: 0 3px 5px rgba(0,0,0,0.1);
     overflow-y: auto;
 }
+
+aside.menu{
+    transition: width 0.1s ease;
+}
+
+.main-content{
+    transition: margin-left 0.1s ease;
+}
+.pt-7{
+    padding-top: 50px;
+}
+
+
+
+
+
+
+

@@ -19,3 +19,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+const aside = document.querySelector('aside.menu');
+const main_content = document.querySelector('.main-content');
+
+if(window.innerWidth < 768){
+    aside.style.width='0';
+    aside.style.padding = '0'
+    main_content.style.marginLeft = '0'
+}else {
+    aside.style.width='256px';
+    aside.style.padding = '10px'
+    main_content.style.marginLeft = '256px'
+}
+
+window.addEventListener('resize',function () {
+    const aside = document.querySelector('aside.menu');
+    const main_content = document.querySelector('.main-content');
+
+    if(window.innerWidth < 768){
+        aside.style.width='0';
+        aside.style.padding = '0'
+        main_content.style.marginLeft = '0'
+    }else {
+        aside.style.width='256px';
+        aside.style.padding = '10px'
+        main_content.style.marginLeft = '256px'
+    }
+})
+
+const menu_click = document.querySelector(".menu-click");
+let valida = true;
+
+
+menu_click.innerHTML = "<i class=\"fa-solid fa-angles-right\"></i>";
+
+menu_click.addEventListener('click', function () {
+    if(valida){
+        menu_click.innerHTML = "<i class=\"fa-solid fa-angles-left\"></i>";
+        aside.style.width='0';
+        aside.style.padding = '0'
+        main_content.style.marginLeft = '0'
+        valida=false;
+    }else {
+        menu_click.innerHTML = "<i class=\"fa-solid fa-angles-right\"></i>";
+        aside.style.width='256px';
+        aside.style.padding = '10px'
+        main_content.style.marginLeft = '256px'
+        valida=true;
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

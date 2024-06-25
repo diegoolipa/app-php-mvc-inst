@@ -6,6 +6,3 @@
 <link rel="stylesheet" href="./app/views/css/bulma.min.css">
 <link rel="stylesheet" href="./app/views/css/sweetalert2.min.css">
 <link rel="stylesheet" href="./app/views/css/style.css">
-<link href="
-https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
-" rel="stylesheet">
