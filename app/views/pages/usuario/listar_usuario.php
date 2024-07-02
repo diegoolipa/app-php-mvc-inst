@@ -1,3 +1,10 @@
+<?php
+use app\controllers\UsuarioController;
+$usuarioController = new UsuarioController();
+
+$usuarios =$usuarioController->listarUsuarios();
+?>
+
 <section class="section">
     <div class="columns is-fluid is-vcentered is-mobile">
         <div class="column">
@@ -27,12 +34,15 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                    foreach($usuarios as $usuario):
+                ?>
                 <tr>
-                    <td>1</td>
-                    <td>Diego</td>
-                    <td>Lipa</td>
-                    <td>diegoolipa</td>
-                    <td>diegoolipa@gmail.com</td>
+                    <td><?php echo htmlspecialchars($usuario['id_usuario']) ?></td>
+                    <td><?php echo htmlspecialchars($usuario['nombres']) ?></td>
+                    <td><?php echo htmlspecialchars($usuario['apellidos']) ?></td>
+                    <td><?php echo htmlspecialchars($usuario['usuario']) ?></td>
+                    <td><?php echo htmlspecialchars($usuario['email']) ?></td>
                     <td>
                         <a href="#" class="button is-rounded is-small is-link" >Actualizar</a>
                     </td>
@@ -40,6 +50,7 @@
                         <button class="button is-rounded is-warning is-small">Elininar</button>
                     </td>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
 

@@ -2,6 +2,7 @@
     require_once "./autoload.php";
     require_once "./config/app.php";
     require_once "./config/server.php";
+    require_once "./app/views/inc/sessionStart.php";
 
     if (isset($_GET['url'])){
         $url_vista = $_GET['url'];

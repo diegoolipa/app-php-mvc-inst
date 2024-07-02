@@ -15,8 +15,9 @@ class ConexionDB
         if (self::$cont == null){
             try {
                 self::$cont = new PDO("mysql:host=".DB_SERVER.";dbname=".DB_NAME,DB_USER,DB_PASSWORD);
-                self::$cont = exec("SET CHARACTER SET utf8");
+                self::$cont->exec("SET CHARACTER SET utf8");
             }catch (PDOException $e){
+                echo $e->getMessage();
                 return Response::errorResponse("Error en la conexión ". $e->getMessage());
             }
         }
