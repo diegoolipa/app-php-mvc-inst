@@ -5,4 +5,4 @@ RewriteEngine ON
 Options ALL -Indexes
 
 #Urls Amigable
-RewriteRule ^([a-zA-Z0-9/ñÑ]+)$ index.php?url=$1
+RewriteRule ^([a-zA-Z0-9/ñÑ_]+)$ index.php?url=$1

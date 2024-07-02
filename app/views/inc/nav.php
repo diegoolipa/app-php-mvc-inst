@@ -4,7 +4,7 @@
 
         </button>
         <a class="navbar-item" href="#">
-            <img src="./app/views/img/logo.png" alt="logo"  height="400">
+            <img src="<?php echo APP_URL ?>./app/views/img/logo.png" alt="logo"  height="400">
         </a>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -51,11 +51,8 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
                     <a class="button is-light">
-                        Log in
+                        Salir
                     </a>
                 </div>
             </div>

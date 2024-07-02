@@ -6,6 +6,9 @@ class ViewsModel
     {
         $listaBlanca = array(
             'pages/principal',
+            'usuario/crear_usuario',
+            'usuario/listar_usuario',
+            'usuario/buscar_usuario',
         );
         if(in_array($url,$listaBlanca)){
             if(is_file("./app/views/pages/".$url.".php")){

@@ -23,6 +23,19 @@ aside.menu{
     padding-top: 50px;
 }
 
+.main-container-login{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-login.login{
+    max-width: 25%;
+    min-width: 10%;
+    height: auto;
+}
 
 
 

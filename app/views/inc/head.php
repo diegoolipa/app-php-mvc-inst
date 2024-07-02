@@ -3,6 +3,6 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
-<link rel="stylesheet" href="./app/views/css/bulma.min.css">
-<link rel="stylesheet" href="./app/views/css/sweetalert2.min.css">
-<link rel="stylesheet" href="./app/views/css/style.css">
+<link rel="stylesheet" href="<?php echo APP_URL ?>./app/views/css/bulma.min.css">
+<link rel="stylesheet" href="<?php echo APP_URL ?>./app/views/css/sweetalert2.min.css">
+<link rel="stylesheet" href="<?php echo APP_URL ?>./app/views/css/style.css">

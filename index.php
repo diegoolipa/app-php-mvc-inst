@@ -36,8 +36,6 @@
                     <?php
                         require_once $url;
                     ?>
-                    <h1><?php echo APP_NAME ?></h1>
-                    <h1>Nombre: <?php echo APP_USER ?></h1>
                 </div>
             </main>
         </div>
