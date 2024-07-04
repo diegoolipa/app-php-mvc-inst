@@ -9,6 +9,9 @@ class ViewsModel
             'usuario/crear_usuario',
             'usuario/listar_usuario',
             'usuario/buscar_usuario',
+            'usuario/actualizar_usuario',
+            'usuario/pdf_usuario',
+            'usuario/excel_usuario',
         );
         if(in_array($url,$listaBlanca)){
             if(is_file("./app/views/pages/".$url.".php")){
