@@ -58,4 +58,50 @@ class UsuarioModel
             throw new Exception("Error al registrar usuario " .$e->getMessage() );
         }
     }
+
+    public function listarUsuarioPorId($id_usuario)
+    {
+        try {
+            $sql = "select * from usuario where id_usuario = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id', $id_usuario);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch (PDOException $e){
+            throw new Exception("Error al optener al usuario " .$e->getMessage() );
+        }
+    }
+
+    public function actualizarUsuario($nombres, $apellidos, $email,$usuario, $id_usuario)
+    {
+        try {
+            $sql = "update usuario set 
+                   nombres = :nombres,
+                   apellidos = :apellidos,
+                   email = :email,
+                   usuario = :usuario
+                   where id_usuario = :id_usuario";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':nombres', $nombres);
+            $stmt->bindParam(':apellidos', $apellidos);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':usuario', $usuario);
+            $stmt->bindParam(':id_usuario', $id_usuario);
+            return $stmt->execute();
+        }catch (PDOException $e){
+            throw new Exception("Error al optener el email " .$e->getMessage() );
+        }
+    }
+
+    public function eliminarUsuario($id_usuario)
+    {
+        try {
+            $sql = "delete from usuario where id_usuario = :id_usuario";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id_usuario', $id_usuario);
+            return $stmt->execute();
+        }catch (PDOException $e){
+            throw new Exception("Error al eliminar el usuario " .$e->getMessage() );
+        }
+    }
 }

@@ -126,4 +126,80 @@ class UsuarioController extends MainModel
             ConexionDB::disconnect();
         }
     }
+
+    public function listarUsuarioPorId($id_usuario)
+    {
+        try {
+            return $this->usuarioModel->listarUsuarioPorId($id_usuario);
+        }catch (Exception $e){
+            return Response::errorResponse($e->getMessage());
+        } finally {
+            ConexionDB::disconnect();
+        }
+    }
+
+    public function actualizarUsuario()
+    {
+        $id_usuario = $this->limpiarCadena($_POST['id_usuario']);
+
+        $nombres = $this->limpiarCadena($_POST['usuario_nombre']);
+        $apellidos = $this->limpiarCadena($_POST['usuario_apellido']);
+        $usuario = $this->limpiarCadena($_POST['usuario_usuario']);
+        $email = $this->limpiarCadena($_POST['usuario_email']);
+
+        try {
+            #Validación de campos obligatorios
+            if ($nombres=="" || $apellidos=="" || $usuario==""){
+                return Response::errorResponse('No has rellenado los campos requeridos');
+            }
+
+            # Verificando usuario #
+            $datos = $this->usuarioModel->listarUsuarioPorId($id_usuario);
+            if (empty($datos)) {
+                return Response::errorResponse("No hemos encontrado el usuario en el sistema");
+            }
+
+            # Verificando email #
+            if ($email != "" && $datos['email'] != $email) {
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $check_email = $this->usuarioModel->validarEmail($email);
+                    if ($check_email) {
+                        return Response::errorResponse("El EMAIL que acaba de ingresar ya se encuentra registrado en el sistema, por favor verifique e intente nuevamente");
+                    }
+                } else {
+                    return Response::errorResponse("Ha ingresado un correo electrónico no valido");
+                }
+            }
+
+            $resultado = $this->usuarioModel->actualizarUsuario($nombres,
+                $apellidos, $email,$usuario, $id_usuario);
+            if ($resultado){
+                return Response::successResponse("El usuario ".$nombres." se ha actualizado correctamente");
+            }else{
+                return Response::errorResponse("El usuario ".$nombres." no se ha actualizado");
+            }
+        }catch (Exception $e){
+            return Response::errorResponse($e->getMessage());
+        } finally {
+            ConexionDB::disconnect();
+        }
+    }
+
+    public function eliminarUsuario()
+    {
+        $id_usuario = $this->limpiarCadena($_POST['id_usuario']);
+
+        try {
+            $resultado =  $this->usuarioModel->eliminarUsuario($id_usuario);
+            if ($resultado){
+                return Response::successResponse("El usuario se ha eliminado correctamente");
+            }else{
+                return Response::errorResponse("El usuario  no se ha eliminado");
+            }
+        }catch (Exception $e){
+            return Response::errorResponse($e->getMessage());
+        } finally {
+            ConexionDB::disconnect();
+        }
+    }
 }

@@ -10,5 +10,10 @@ if (isset($_POST['modulo_usuario'])){
     if ($_POST['modulo_usuario'] == 'registrar'){
         echo $usuarioController->registrarUsuario();
     }
-
+    if ($_POST['modulo_usuario'] == 'actualizar'){
+        echo $usuarioController->actualizarUsuario();
+    }
+    if ($_POST['modulo_usuario'] == 'eliminar'){
+        echo $usuarioController->eliminarUsuario();
+    }
 }

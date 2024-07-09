@@ -4,10 +4,11 @@
     require_once "./config/server.php";
     require_once "./app/views/inc/sessionStart.php";
 
-    if (isset($_GET['url'])){
-        $url_vista = $_GET['url'];
+    if (isset($_GET['url'])){ //usuario/actualizar_usuario/1
+        //$url_vista = $_GET['url'];
+        $url_vista = explode("/",$_GET['url']);
     }else{
-        $url_vista = 'login/login';
+        $url_vista = ['login','login'];
     }
 
     //var_dump($url_vista);
@@ -24,7 +25,7 @@
     use app\controllers\ViewsController;
 
     $viewsController = new ViewsController();
-    $url = $viewsController->obtenerVistaController($url_vista);
+    $url = $viewsController->obtenerVistaController($url_vista[0]."/".$url_vista[1]);
     if ($url == 'login/login' || $url == 'pages/404'){
         require_once "./app/views/pages/".$url.".php";
     }else{

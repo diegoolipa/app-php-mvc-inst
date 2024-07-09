@@ -52,13 +52,27 @@ $usuarios =$usuarioController->listarUsuarios();
                     <td><?php echo htmlspecialchars($usuario['usuario']) ?></td>
                     <td><?php echo htmlspecialchars($usuario['email']) ?></td>
                     <td>
-                        <a href="<?php echo APP_URL ?>usuario/actualizar_usuario"
+                        <a href="<?php echo APP_URL ?>usuario/actualizar_usuario/<?php echo $usuario['id_usuario'] ?>"
                            class="button is-rounded is-small is-link" >
                             <i class="fa-solid fa-pencil pr-1"></i> Actualizar</a>
                     </td>
                     <td>
-                        <button class="button is-rounded is-warning is-small">
-                            <i class="fa-solid fa-trash-can pr-1"></i> Elininar</button>
+                        <form action="<?php echo APP_URL ?>app/ajax/usuarioAjax.php"
+                              class="FormularioAjax"
+                              method="POST"
+                              autocomplete="off">
+                            <input
+                                    type="hidden"
+                                    name="modulo_usuario"
+                                    value="eliminar">
+                            <input
+                                    type="hidden"
+                                    name="id_usuario"
+                                    value="<?php echo $usuario['id_usuario'] ?>"
+                            >
+                            <button type="submit" class="button is-rounded is-warning is-small">
+                                <i class="fa-solid fa-trash-can pr-1"></i> Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 <?php endforeach; ?>
